@@ -1,0 +1,54 @@
+
+ready
+WIFI DISCONNECT
+AT+CWMODE_CUR=1
+OK
+AT+CWSTARTSMART=3
+OK
+smartconfig type:AIRKISS
+Smart get wifi info
+ssid:USER-20140927OX_Network_1
+password:swt198856
+WIFI CONNECTED
+WIFI GOT IP
+smartconfig connected wifi
+AT+CWSTOPSMART
+OK
+
+
+
+
+
+AT+CWMODE_CUR=1
+AT+CWMODE_CUR=1
+
+OK
+AT+CWSTARTSMART=3
+AT+CWSTARTSMART=3
+
+OK
+smartconfig type:AIRKISS
+Smart get wifi info
+ssid:nicolel
+password:55775856
+WIFI DISCONNECT
+AT+CWSTOPSMART
+AT+CWSTOPSMART
+
+OK
+AT+CWSTARTSMART=3
+AT+CWSTARTSMART=3
+
+OK
+smartconfig type:AIRKISS
+Smart get wifi info
+ssid:nicolel
+password:7335012asd
+WIFI CONNECTED
+WIFI GOT IP
+smartconfig connected wifi
+AT+CWQAP
+AT+CWQAP
+
+OK
+WIFI DISCONNECT
