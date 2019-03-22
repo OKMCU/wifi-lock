@@ -198,6 +198,10 @@ static void appLock_ProcessOsalMsgKey(HalKeyMsg_t keyMsg)
         {
             isDoorOpen = FALSE;
             HalTerminalPrintStr("Door closed.\r\n");
+
+            // Turn on GREEN LED on the door
+            HalLedSet( HAL_LED_Door_R, HAL_LED_MODE_OFF );
+            HalLedSet( HAL_LED_Door_G, HAL_LED_MODE_ON );
             return;
         }
         
@@ -206,6 +210,11 @@ static void appLock_ProcessOsalMsgKey(HalKeyMsg_t keyMsg)
 
             isDoorOpen = TRUE;
             HalTerminalPrintStr("Door opened.\r\n");
+
+            // Cancel the Door Open Alarm Timer
+            osal_stop_timerEx(AppLockTaskID, APP_LOCK_EVT_OpenLockEnable);
+            // Stop the buzzer beep
+            HalBuzzerBeep( 0, 0, 0 );
 
             hciWiFiState = HciWiFiGetState();
             if(HCI_WIFI_STATE_DEV(hciWiFiState) == HCI_WIFI_STATE_DEV_Initialized)
@@ -477,6 +486,13 @@ extern uint16_t AppLock_ProcessEvent ( uint8_t task_id, uint16_t events )
         //Websocket connection stable
         HalBuzzerBeep(HAL_BUZZER_TIME_SHORT, 0, 1);
         return events ^ APP_LOCK_EVT_WsOpenedBeep;
+    }
+
+    if( events & APP_LOCK_EVT_DoorOpenAlarm )
+    {
+        //beep 15 times, on 300ms, off 700ms
+        HalBuzzerBeep(HAL_BUZZER_DOOR_OPEN_ALARM_ON_TIME, HAL_BUZZER_DOOR_OPEN_ALARM_OFF_TIME, 15);
+        return events ^ APP_LOCK_EVT_DoorOpenAlarm;
     }
     #if 0
     if( events & APP_LOCK_EVT_DevStart )
@@ -751,6 +767,10 @@ extern void onWebSocketRxData(char *pSvrMsg)
         }
         pClientMsg = "OPEN:OK";
         WebSocketSend(pClientMsg);
+
+        // Turn on RED LED on the door
+        HalLedSet( HAL_LED_Door_G, HAL_LED_MODE_OFF );
+        HalLedSet( HAL_LED_Door_R, HAL_LED_MODE_ON );
         
         HalTerminalPrintStr("[TXMSG]:");
         HalTerminalPrintStr(pClientMsg);

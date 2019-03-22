@@ -3,7 +3,7 @@
 #include "hal_types.h"
 #include "hal_drivers.h"
 #include "hal_assert.h"
-#include "lib\stringx.h"
+#include "stringx.h"
 
 #include "app_lock.h"
 

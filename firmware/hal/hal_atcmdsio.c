@@ -7,7 +7,7 @@
 
 #include "hci_wifi.h"
 
-#include "lib\stringx.h"
+#include "stringx.h"
 
 #include "osal.h"
 #include "osal_fifo.h"

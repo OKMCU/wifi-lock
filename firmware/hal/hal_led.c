@@ -424,6 +424,30 @@ void HalLedOnOff (uint8_t leds, uint8_t mode)
     }
   }
 
+  if (leds & HAL_LED_4)
+  {
+    if (mode == HAL_LED_MODE_ON)
+    {
+      HAL_TURN_ON_LED4();
+    }
+    else
+    {
+      HAL_TURN_OFF_LED4();
+    }
+  }
+
+  if (leds & HAL_LED_5)
+  {
+    if (mode == HAL_LED_MODE_ON)
+    {
+      HAL_TURN_ON_LED5();
+    }
+    else
+    {
+      HAL_TURN_OFF_LED5();
+    }
+  }
+  
   /* Remember current state */
   if (mode)
   {

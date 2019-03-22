@@ -7,6 +7,7 @@
 #define APP_LOCK_MSG_HEAD_KeyMsg        0x00
 #define APP_LOCK_MSG_HEAD_Terminal      0x01
 
+#define APP_LOCK_EVT_DoorOpenAlarm      0x0040
 #define APP_LOCK_EVT_WsOpenedBeep       0x0020
 #define APP_LOCK_EVT_SendHBP            0x0010
 #define APP_LOCK_EVT_CloseWebSocket     0x0008

@@ -66,19 +66,27 @@ extern "C"
                                    GPIO_SetMode(P0, BIT5, GPIO_PMD_OUTPUT);\
                                    GPIO_SetMode(P3, BIT3, GPIO_PMD_OUTPUT);\
                                    GPIO_SetMode(P3, BIT4, GPIO_PMD_OUTPUT);\
-                                   GPIO_SetMode(P4, BIT1, GPIO_PMD_OUTPUT);)
+                                   GPIO_SetMode(P4, BIT1, GPIO_PMD_OUTPUT);\
+                                   GPIO_SetMode(P4, BIT6, GPIO_PMD_OUTPUT);\
+                                   GPIO_SetMode(P4, BIT7, GPIO_PMD_OUTPUT);)
 #define HAL_TURN_ON_LED0()      P03 = 1
 #define HAL_TURN_ON_LED1()      P41 = 1
 #define HAL_TURN_ON_LED2()      P05 = 1
 #define HAL_TURN_ON_LED3()      P34 = 0
+#define HAL_TURN_ON_LED4()      P46 = 1
+#define HAL_TURN_ON_LED5()      P47 = 1
 #define HAL_TURN_OFF_LED0()     P03 = 0
 #define HAL_TURN_OFF_LED1()     P41 = 0
 #define HAL_TURN_OFF_LED2()     P05 = 0
 #define HAL_TURN_OFF_LED3()     P34 = 1
+#define HAL_TURN_OFF_LED4()     P46 = 0
+#define HAL_TURN_OFF_LED5()     P47 = 0
 #define HAL_STATE_LED0()        (P03 ? 1 : 0)
 #define HAL_STATE_LED1()        (P41 ? 1 : 0)
 #define HAL_STATE_LED2()        (P05 ? 1 : 0)
 #define HAL_STATE_LED3()        (P34 ? 0 : 1)
+#define HAL_STATE_LED4()        (P46 ? 1 : 0)
+#define HAL_STATE_LED5()        (P47 ? 1 : 0)
 
 /*********************************************************************
  * CONSTANTS
@@ -89,12 +97,16 @@ extern "C"
 #define HAL_LED_1     0x02
 #define HAL_LED_2     0x04
 #define HAL_LED_3     0x08
-#define HAL_LED_ALL   (HAL_LED_0 | HAL_LED_1 | HAL_LED_2 | HAL_LED_3)
+#define HAL_LED_4     0x10
+#define HAL_LED_5     0x20
+#define HAL_LED_ALL   (HAL_LED_0 | HAL_LED_1 | HAL_LED_2 | HAL_LED_3 | HAL_LED_4 | HAL_LED_5)
 
 #define HAL_LED_WiFi_B      HAL_LED_0
 #define HAL_LED_WiFi_R      HAL_LED_1
 #define HAL_LED_System      HAL_LED_2
 #define HAL_LED_Relay       HAL_LED_3 
+#define HAL_LED_Door_R      HAL_LED_4
+#define HAL_LED_Door_G      HAL_LED_5
 
 /* Modes */
 #define HAL_LED_MODE_OFF     0x00
