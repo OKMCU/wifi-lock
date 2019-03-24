@@ -516,6 +516,11 @@
           <GroupName>APP</GroupName>
           <Files>
             <File>
+              <FileName>hal_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hal\hal_key.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\App\main.c</FilePath>
@@ -584,11 +589,6 @@
               <FileName>hal_led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\hal\hal_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>hal_key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\hal\hal_key.c</FilePath>
             </File>
             <File>
               <FileName>hal_devid.c</FileName>

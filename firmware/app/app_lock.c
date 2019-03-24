@@ -212,7 +212,7 @@ static void appLock_ProcessOsalMsgKey(HalKeyMsg_t keyMsg)
             HalTerminalPrintStr("Door opened.\r\n");
 
             // Cancel the Door Open Alarm Timer
-            osal_stop_timerEx(AppLockTaskID, APP_LOCK_EVT_OpenLockEnable);
+            osal_stop_timerEx(AppLockTaskID, APP_LOCK_EVT_DoorOpenAlarm);
             // Stop the buzzer beep
             HalBuzzerBeep( 0, 0, 0 );
 
@@ -769,8 +769,13 @@ extern void onWebSocketRxData(char *pSvrMsg)
         WebSocketSend(pClientMsg);
 
         // Turn on RED LED on the door
-        HalLedSet( HAL_LED_Door_G, HAL_LED_MODE_OFF );
-        HalLedSet( HAL_LED_Door_R, HAL_LED_MODE_ON );
+
+        if( isDoorOpen == FALSE )
+        {
+            HalLedSet( HAL_LED_Door_G, HAL_LED_MODE_OFF );
+            HalLedSet( HAL_LED_Door_R, HAL_LED_MODE_ON );
+            osal_start_timerEx( AppLockTaskID , APP_LOCK_EVT_DoorOpenAlarm, 5000 );
+        }
         
         HalTerminalPrintStr("[TXMSG]:");
         HalTerminalPrintStr(pClientMsg);
