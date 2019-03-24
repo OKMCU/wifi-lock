@@ -119,6 +119,7 @@ void HalLedInit (void)
 #if (HAL_LED == TRUE)
   HAL_LED_IO_INIT();
   HalLedSet(HAL_LED_ALL, HAL_LED_MODE_OFF);  // Initialize all LEDs to OFF.
+  HalLedSet(HAL_LED_Door_R, HAL_LED_MODE_ON);
 #if defined BLINK_LEDS
   HalLedStatusControl.sleepActive = FALSE;  // Initialize sleepActive to FALSE.
 #endif

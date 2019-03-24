@@ -99,6 +99,11 @@ static void SYS_Init(void)
     SYS->P2_MFP &= ~(SYS_MFP_P20_PWM0);
     SYS->P2_MFP |= (SYS_MFP_P20_PWM0);
 
+
+    // P4.6 P4.7 work as GPIO
+    SYS->P4_MFP &= ~(SYS_MFP_P46_Msk);
+    SYS->P4_MFP &= ~(SYS_MFP_P47_Msk);
+
     /* Lock protected registers */
     SYS_LockReg();
 
